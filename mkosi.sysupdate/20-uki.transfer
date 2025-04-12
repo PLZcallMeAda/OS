@@ -1,0 +1,21 @@
+[Transfer]
+ProtectVersion=%A    # 保护当前正在运行的 UKI 版本
+
+[Source]
+Type=regular-file    # 源文件为 UKI 文件（如 vmlinuz.efi）
+Path=/               # 镜像根路径（mkosi 构建的 output 目录）
+PathRelativeTo=explicit  # 明确指向 mkosi 的构建产物
+MatchPattern=%M_@v.efi  # 匹配 UKI 文件名模式（如 host1_v1.2.3.efi）
+
+[Target]
+Type=regular-file    # 目标是文件（非分区）
+Path=/EFI/Linux      # 目标路径（相对于 UEFI 的 ESP 分区）
+PathRelativeTo=boot  # 路径基于 UEFI 的 ESP 分区挂载点（如 /boot）
+MatchPattern=%M_@v+@l-@d.efi \  # 多个可能的文件名模式（兼容不同命名方式）
+             %M_@v+@l.efi \    # @l=负载版本, @d=构建日期
+             %M_@v.efi
+Mode=0444            # 文件权限为只读（0444）
+TriesLeft=3          # 允许最多 3 次启动尝试（用于 A/B 回滚）
+TriesDone=0          # 当前已尝试次数（初始为 0）
+InstancesMax=2       # 保留最多 2 个旧版本（节省存储空间）
+
