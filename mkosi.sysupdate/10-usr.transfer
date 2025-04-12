@@ -1,18 +1,17 @@
 [Transfer]
-ProtectVersion=%A    # 保留当前活动版本（Active Version），确保回滚能力
+ProtectVersion=%A   
 
 [Source]
-Type=regular-file    # 源文件为“原始”磁盘镜像（raw disk image）
-Path=/               # 镜像的根路径（由 mkosi 生成在 output 目录）
-PathRelativeTo=explicit  # 路径明确指向 mkosi 构建产物的根目录（如 mkosi.output）
-MatchPattern=%M_@v.usr-%a.@u.raw  # 匹配镜像文件名的模式：
-                   # %M=主机名, @v=版本, %a=架构, @u=目标分区的 UUID
+Type=regular-file   
+Path=/
+PathRelativeTo=explicit
+MatchPattern=%M_@v.usr-%a.@u.raw
 
 [Target]
-Type=partition        # 目标是磁盘分区（非文件）
-Path=auto             # 自动检测分区路径（如 /dev/disk/by-partuuid/...）
-MatchPattern=%M_@v    # 匹配分区命名模式（如 host1_v1.2.3）
-MatchPartitionType=usr  # 仅匹配类型为 "usr" 的分区（由 GPT 分区类型定义）
-PartitionFlags=0       # 分区标志位（保留默认值）
-ReadOnly=1             # 分区挂载为只读（符合不可变系统特性）
+Type=partition
+Path=auto
+MatchPattern=%M_@v
+MatchPartitionType=usr
+PartitionFlags=0
+ReadOnly=1
 
