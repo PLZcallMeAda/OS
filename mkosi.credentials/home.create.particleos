@@ -1,0 +1,13 @@
+{
+    "userName": "ada",
+    "uid": 1000,
+    "gid": 1000,
+    "enforcePasswordPolicy": false,
+    "memberOf": [
+        "wheel",
+        "systemd-journal"
+    ],
+    "secret": {
+        "password": ["11112222"]
+    },
+}
