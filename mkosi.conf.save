@@ -5,13 +5,12 @@ Release=rawhide
 RepositoryKeyCheck=no
 Mirror=https://mirror.sjtu.edu.cn/fedora
 [Build]
+ToolsTreeRelease=rawhide
+ToolsTreeMirror=https://mirror.sjtu.edu.cn/fedora
 History=yes
 CacheDirectory=mkosi.cache
 Incremental=yes
-ToolsTreeRelease=rawhide
-ToolsTreeMirror=https://mirror.sjtu.edu.cn/fedora
 ToolsTree=default
-
 [Output]
 Format=disk
 OutputDirectory=mkosi.output
@@ -26,7 +25,7 @@ RootPassword=11112222
 BaseTrees=%O/base
 KernelCommandLine=rw logo.nologo security=none audit=0 mitigations=off
 [Runtime]
-RuntimeSize=50G
+RuntimeSize=30G
 RAM=4G
 CPUs=4
 TPM=no
